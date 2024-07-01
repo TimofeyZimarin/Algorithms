@@ -35,6 +35,15 @@ def codes(tree, elem=-1, num='', S={}):
 
     while len(tree) > 0:
         knot = tree[elem]
+        roots = []
+        if len(knot) == 3:
+            flag = True
+            for i in knot[2]:
+                if i not in S:
+                    flag = False
+            if flag == True:
+                return S
+
         if len(knot) == 3:
             for i in knot[2]:
                 j = 0
@@ -42,20 +51,15 @@ def codes(tree, elem=-1, num='', S={}):
                     j += 1
                 if knot[2].index(i) == 0:
                     num += '0'
-                    k = j
                     codes(tree, j, num, S)
-                    j = k - 1
-                    i = tree[j][0]
-
+                    num = num[:-1]
                 else:
                     num += '1'
                     codes(tree, j, num, S)
-                    j = k - 1
-                    i = tree[j][0]
+                    num = num[:-1]
         elif len(knot) != 3:
             S[knot[0]] = num
-            num = num[:-1]
-            return num
+            return S
 
 
 
