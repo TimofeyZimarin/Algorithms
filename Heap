@@ -2,9 +2,7 @@ import math
 
 class Heap():
 
-    heap = []
-
-    def __init__(self, heap):
+    def __init__(self, heap=[]):
         self.heap = heap
 
     def read(self):
