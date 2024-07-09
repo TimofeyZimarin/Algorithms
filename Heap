@@ -23,11 +23,13 @@ class Heap():
             else:
                 flag = False
 
-        return heap
+        return self.heap
 
     def main(self):
         n = int(input())
         for i in range(n):
-            if Heap.read()[0] == 'Insert':
-                Heap.Insert(Heap.read()[1])
+            if Heap.read(self)[0] == 'Insert':
+                Heap.Insert(self, self.heap, Heap.read(self)[1])
+
+        return self.heap
 print(Heap().main())
