@@ -1,0 +1,36 @@
+import math
+
+class Heap():
+
+    heap = []
+    n = int(input())
+
+    def __init__(self, heap, n):
+        self.heap = heap
+        self.n = n
+
+    def read(self):
+        s = str(input())
+        command = str(s.split()[0])
+        priority = int(s.split()[-1])
+
+        return command, priority
+
+    def Insert(self, heap, priority):
+        heap.append(priority)
+        flag = True
+        i = -1
+        while flag:
+            if heap[i] > heap[math.ceil((i-1)/2)]:
+                heap[math.ceil((i-1)/2)], heap[i] = heap[i], heap[math.ceil((i-1)/2)]
+                i = math.ceil((i-1)/2)
+            else:
+                flag = False
+
+        return heap
+
+    def main(self, n):
+        for i in range(n):
+            if Heap.read()[0] == 'Insert':
+                Heap.Insert(Heap.read()[1])
+print(Heap().main())
