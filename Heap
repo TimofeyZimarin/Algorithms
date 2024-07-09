@@ -3,11 +3,9 @@ import math
 class Heap():
 
     heap = []
-    n = int(input())
 
-    def __init__(self, heap, n):
+    def __init__(self, heap):
         self.heap = heap
-        self.n = n
 
     def read(self):
         s = str(input())
@@ -29,7 +27,8 @@ class Heap():
 
         return heap
 
-    def main(self, n):
+    def main(self):
+        n = int(input())
         for i in range(n):
             if Heap.read()[0] == 'Insert':
                 Heap.Insert(Heap.read()[1])
