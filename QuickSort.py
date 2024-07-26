@@ -1,5 +1,39 @@
 import sys
 import time
+from math import floor
+
+def Binary_search(a:list, i:int, s:str):
+    l = 0
+    r = len(a) - 1
+    if s == 'l' and i < a[0]:
+        return 0
+    elif s == 'r' and i > a[-1]:
+        return len(a)
+    elif s == 'r' and i <= a[0]:
+        return 0
+    elif s == 'l' and i >= a[-1]:
+        return len(a)
+    ind = 0
+    if s == 'l':
+        while l <= r:
+            m = floor(l + (r - l) / 2)
+            if a[m] <= i:
+                ind = m
+                l = m + 1
+            elif a[m] > i:
+                r = m - 1
+        return ind + 1
+    elif s == 'r':
+        while l <= r:
+            m = floor(l + (r - l) / 2)
+            if a[m] < i:
+                ind = m
+                l = m + 1
+            elif a[m] >= i:
+                r = m - 1
+        return ind + 1
+
+
 
 def partition(A:list, l, r):
 
@@ -59,13 +93,8 @@ def main():
 
     m = []
     for j in points:
-        x = 0
-        y = 0
-        for i in range(len(L_sorted)):
-            if L_sorted[i] <= j:
-                x += 1
-            if R_sorted[i] < j:
-                y += 1
+        x = Binary_search(L_sorted, j, 'l')
+        y = Binary_search(R_sorted, j, 'r')
         m.append(x - y)
 
     return ' '.join(str(i) for i in m)
@@ -73,11 +102,3 @@ def main():
 
 if __name__ == '__main__':
     print(main())
-
-# def sort(A, points):
-#     for i in points:
-#         flag = True
-#         i = (len(A) - 1) // 2
-#         while flag:
-#             if A[i]
-
