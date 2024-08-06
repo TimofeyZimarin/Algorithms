@@ -1,3 +1,5 @@
+import sys
+
 def EditDist(a: str, b: str):
 
     D = [[0 for i in range(len(b) + 1)] for j in range(len(a) + 1)]
@@ -11,39 +13,40 @@ def EditDist(a: str, b: str):
             c = (1, 0)[a[i-1] == b[j-1]]
             D[i][j] = min(D[i-1][j] + 1, D[i][j-1] + 1, D[i-1][j-1] + c)
 
-    for i in range(len(a) + 1):
-        print(D[i], sep='\n')
+    # for i in range(len(a) + 1):
+    #     print(D[i], sep='\n')
 
     A = list(a)
     B = list(b)
 
     i = len(a)
     j = len(b)
-    l = len(b) - 1
     result = ''
     while i > 0 or j > 0:
         if D[i-1][j] == D[i][j] - 1:
             result = '_' + result
             i -= 1
         elif D[i][j-1] == D[i][j] - 1:
-            result = B[l] + result
-            a = a[:]
-            l -= 1
+            result = B[j-1] + result
+            a = a[:i] + '_' + a[i:]
             j -= 1
         elif D[i-1][j-1] == D[i][j]:
-            result = B[l] + result
+            result = B[j-1] + result
             i -= 1
             j -= 1
-            l -= 1
         else:
-            result = B[l] + result
-            l -= 1
+            result = B[j-1] + result
             i -= 1
             j -= 1
-    print(a)
-    print(result)
-    return
+    # print(a)
+    # print(result)
+    return D[-1][-1]
 
+def main():
+    reader = sys.stdin
+    a = str(next(reader))
+    b = str(next(reader))
+    print(EditDist(a, b))
 
-
-EditDist(a='short', b='ports')
+if __name__ == '__main__':
+    main()
