@@ -23,3 +23,15 @@ class stack():
 def main():
     reader = sys.stdin
     n = int(next(reader))
+    commands = []
+    for i in range(n):
+        com = next(reader)
+        commands.append(com.split())
+    
+    for i in range(len(commands)):
+        if len(commands[i]) > 1:
+            stack().push(int(commands[i][1]))
+        elif 
+
+if __name__ == '__main__':
+    main()
