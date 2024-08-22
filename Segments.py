@@ -35,7 +35,6 @@ def pockets(data, size):
                     j += 1
                 elif time == data[j][0] and stack == size:
                     stack += 1
-                    j += 1
                 else:
                     break
 
@@ -55,8 +54,8 @@ def main():
     # for i in range(n):
     #     a, d = map(int, next(reader).split())
     #     data.append([a, d])
-    data = [[999999, 1], [1000000, 0], [1000000, 1], [1000000, 0], [1000000, 0]]
-    size = 1
+    data = [[2, 9], [4, 8], [10, 9], [15, 2], [19, 1]]
+    size = 2
     pockets(data, size)
 
 
