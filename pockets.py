@@ -1,6 +1,5 @@
 import sys
 
-
 def pockets(data, size):
     stack = 0
     i = 0
@@ -11,6 +10,7 @@ def pockets(data, size):
     else:
         time = data[0][0]
     while i < len(data):
+        flag = True
         if data[i][1] == 0:
             if stack == 0:
                 time = data[i][0]
@@ -31,7 +31,9 @@ def pockets(data, size):
                 time += data[i][1]
             else:
                 time_arr.append(-1)
-            while j < len(data) and time >= data[j][0]:
+                flag = False
+
+            while j < len(data) and time >= data[j][0] and flag:
                 if time >= data[j][0] and stack < size:
                     stack += 1
                     j += 1
@@ -41,64 +43,9 @@ def pockets(data, size):
                 else:
                     break
             i += 1
-            stack -= 1
+            if stack != 0:
+                stack -= 1
     return [print(i) for i in time_arr]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # if len(data) == 0:
-    #     return
-    # while i < len(data):
-    #     if data[i][1] == 0:
-    #         time_arr.append(time)
-    #         i += 1
-    #         j += 1
-    #         if stack != 0:
-    #             stack -= 1
-    #         if i < len(data) and stack == 0:
-    #             time = data[i][0]
-    #     else:
-    #         if i == 0:
-    #             time = data[i][0]
-    #         elif i < len(data) and stack == 0:
-    #             time = data[i][0]
-    #         if data[i][1] != -1:
-    #             time_arr.append(time)
-    #             time += data[i][1]
-    #         else:
-    #             time_arr.append(-1)
-    #         while j < len(data) and time >= data[j][0]:
-    #             if time >= data[j][0] and stack < size:
-    #                 stack += 1
-    #                 j += 1
-    #             elif time > data[j][0] and stack == size:
-    #                 data[j][1] = -1
-    #                 j += 1
-    #             # elif time == data[j][0] and stack == size:
-    #             #     stack += 1
-    #             else:
-    #                 break
-    #
-    #         i += 1
-    #         stack -= 1
-    #
-    #
-    #
-    #
-    # return [print(i) for i in time_arr]
-
 
 def main():
     reader = sys.stdin
@@ -107,8 +54,6 @@ def main():
     for i in range(n):
         a, d = map(int, next(reader).split())
         data.append([a, d])
-    # data = [[0, 0], [0, 0], [0, 0], [1, 0], [1, 0], [1, 1], [1, 2], [1, 3]]
-    # size = 2
     pockets(data, size)
 
 
