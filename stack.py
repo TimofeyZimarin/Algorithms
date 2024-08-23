@@ -15,8 +15,8 @@ class stack():
             self.maximum.append(elem)
     def pop(self):
         last = self.stack.pop()
-        self.maximum.pop()
-        return last
+        max_last = self.maximum.pop()
+        return
     def max(self):
         return print(self.maximum[-1])
 
@@ -31,7 +31,10 @@ def main():
     for i in range(len(commands)):
         if len(commands[i]) > 1:
             stack().push(int(commands[i][1]))
-        elif 
+        elif commands[i][0] == 'pop':
+            stack().pop()
+        else:
+            stack().max()
 
 if __name__ == '__main__':
     main()
