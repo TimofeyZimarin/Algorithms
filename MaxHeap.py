@@ -1,7 +1,7 @@
-class Heap():
+class MaxHeap():
 
-    def __init__(self, heap=[]):
-        self.heap = heap
+    def __init__(self):
+        self.heap = []
 
     def read(self):
         s = str(input())
@@ -52,12 +52,12 @@ class Heap():
     def main(self):
         n = int(input())
         for i in range(n):
-            data = Heap.read(self)
+            data = MaxHeap.read(self)
             if len(data) == 2:
                 command, priority = data[0], int(data[-1])
-                Heap.Insert(self, self.heap, priority)
+                MaxHeap.Insert(self, self.heap, priority)
             else:
-                Heap.ExtractMax(self, self.heap)
+                MaxHeap.ExtractMax(self, self.heap)
 
         return self.heap
-Heap().main()
+MaxHeap().main()
