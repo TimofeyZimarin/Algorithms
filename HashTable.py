@@ -14,6 +14,8 @@ class LinkedList:
             self.head = new_s
             return
         else:
+            if self.find(s) == 'yes':
+                return
             old_s = self.head
             new_s.NextNode = old_s
             self.head = new_s
@@ -39,10 +41,10 @@ class LinkedList:
         head_elem = self.head
         while head_elem:
             if head_elem.Node == s:
-                return print('yes')
+                return 'yes'
             else:
                 head_elem = head_elem.NextNode
-        return print('no')
+        return 'no'
 
     def check(self):
         head_elem = self.head
@@ -54,35 +56,63 @@ class LinkedList:
 
 class HashTable():
 
-    def __init__(self):
-        self.table = []
+    def __init__(self, m):
+        self.table = [None for i in range(m)]
+        self. m = m
 
-    def HashFunc(self, m, s):
+    def HashFunc(self, s):
         h = 0
         for i in range(len(s)):
             h_temp = (ord(s[i]) * 263 ** i) % 1000000007
             h += h_temp
-        h = h % m
+        h = h % 1000000007 % self.m
+        return h
+
+    def add(self, s):
+        ind = self.HashFunc(s)
+        if self.table[ind] is None:
+            self.table[ind] = LinkedList()
+            self.table[ind].add(s)
+        else:
+            self.table[ind].add(s)
+
+    def delete(self, s):
+        ind = self.HashFunc(s)
+        if self.table[ind] is None:
+            return
+        else:
+            self.table[ind].delete(s)
+
+    def find(self, s):
+        ind = self.HashFunc(s)
+        if self.table[ind] is None:
+            return print('no')
+        else:
+            print(self.table[ind].find(s))
+
+    def check(self, ind):
+        if self.table[ind] is None:
+            return
+        else:
+            self.table[ind].check()
 
 def main():
     m = int(input())
     n = int(input())
     req = []
+    Hash = HashTable(m)
     for i in range(n):
         req.append(input().split())
-    print(m, n, req)
+    for i in range(len(req)):
+        meth = req[i][0]
+        s = req[i][1]
+        if meth == 'add':
+            Hash.add(s)
+        elif meth == 'find':
+            Hash.find(s)
+        elif meth == 'check':
+            Hash.check(int(s))
+        elif meth == 'del':
+            Hash.delete(s)
 
 main()
-
-# List = LinkedList()
-# List.find('aqfas')
-# List.delete('aqfasaqfasaqfasaqfas')
-# for i in range(5):
-#     s = 'aqfas' * i
-#     List.add(s)
-# List.check()
-# List.find('aqfasaqfasaqfas')
-# List.delete('aqfas')
-# List.add('123421')
-# List.find('aqfasaqfasaqfas')
-# List.check()
