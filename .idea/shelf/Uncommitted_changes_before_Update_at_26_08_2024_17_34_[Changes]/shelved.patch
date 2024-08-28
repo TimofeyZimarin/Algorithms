@@ -1,0 +1,959 @@
+Index: CountSort.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\ndef CountSort(A):\r\n    B = [0] * 10\r\n    for i in A:\r\n        B[i - 1] += 1\r\n\r\n    for i in range(1, len(B)):\r\n        B[i] += B[i - 1]\r\n\r\n    A_1 = [0] * len(A)\r\n    for i in range(len(A) - 1, -1, -1):\r\n        A_1[B[A[i] - 1] - 1] = A[i]\r\n        B[A[i] - 1] -= 1\r\n    return A_1
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/CountSort.py b/CountSort.py
+--- a/CountSort.py	(revision b3da335a7e02d1988fcdcc46706fc8c2b7954f8d)
++++ b/CountSort.py	(date 1724648758593)
+@@ -1,4 +1,4 @@
+-
++import sys
+ def CountSort(A):
+     B = [0] * 10
+     for i in A:
+@@ -11,4 +11,14 @@
+     for i in range(len(A) - 1, -1, -1):
+         A_1[B[A[i] - 1] - 1] = A[i]
+         B[A[i] - 1] -= 1
+-    return A_1
+\ No newline at end of file
++    return A_1
++
++def main():
++    reader = sys.stdin
++    n = int(next(reader))
++    *reader, = map(int, next(reader).split())
++    A = CountSort(reader)
++    return ' '.join(str(i) for i in A)
++
++if __name__ == '__main__':
++    print(main())
+\ No newline at end of file
+Index: Processors.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class MinHeap():\r\n\r\n    def __init__(self):\r\n        self.heap = []\r\n\r\n    def Insert(self, priority):\r\n        self.heap.append(priority)\r\n        flag = True\r\n        i = len(self.heap) - 1\r\n        while flag:\r\n            if self.heap[i][1] < self.heap[(i - 1) // 2][1] and ((i - 1) // 2) >= 0:\r\n                self.heap[(i - 1) // 2], self.heap[i] = self.heap[i], self.heap[(i - 1) // 2]\r\n                i = (i - 1) // 2\r\n            elif self.heap[i][1] == self.heap[(i - 1) // 2][1] and ((i - 1) // 2) >= 0 and self.heap[i][0] < self.heap[(i - 1) // 2][0]:\r\n                self.heap[(i - 1) // 2], self.heap[i] = self.heap[i], self.heap[(i - 1) // 2]\r\n                i = (i - 1) // 2\r\n            else:\r\n                flag = False\r\n\r\n        return self.heap\r\n\r\n    def ExtractMin(self):\r\n        if len(self.heap) == 1:\r\n            minimum = self.heap.pop()\r\n        else:\r\n            self.heap[0], self.heap[-1] = self.heap[-1], self.heap[0]\r\n            minimum = self.heap[-1]\r\n            self.heap = self.heap[:-1]\r\n            flag = True\r\n            i = 0\r\n            while flag:\r\n                if (i * 2 + 2) <= len(self.heap) - 1:\r\n                    if self.heap[i * 2 + 1][1] > self.heap[i * 2 + 2][1]:\r\n                        if self.heap[i * 2 + 2][1] < self.heap[i][1] or self.heap[i * 2 + 2][0] < self.heap[i][0]:\r\n                            self.heap[i], self.heap[i * 2 + 2] = self.heap[i * 2 + 2], self.heap[i]\r\n                            i = i * 2 + 2\r\n                    elif self.heap[i * 2 + 1][1] < self.heap[i * 2 + 2][1]:\r\n                        if self.heap[i * 2 + 1][1] < self.heap[i][1] or self.heap[i * 2 + 1][0] < self.heap[i][0]:\r\n                            self.heap[i], self.heap[i * 2 + 1] = self.heap[i * 2 + 1], self.heap[i]\r\n                            i = i * 2 + 1\r\n                    elif self.heap[i * 2 + 1][1] == self.heap[i * 2 + 2][1] and self.heap[i * 2 + 1][1] < self.heap[i][1]:\r\n                        if self.heap[i * 2 + 1][0] < self.heap[i * 2 + 2][0]:\r\n                            self.heap[i], self.heap[i * 2 + 1] = self.heap[i * 2 + 1], self.heap[i]\r\n                            i = i * 2 + 1\r\n                        else:\r\n                            self.heap[i], self.heap[i * 2 + 2] = self.heap[i * 2 + 2], self.heap[i]\r\n                            i = i * 2 + 2\r\n                    elif self.heap[i * 2 + 1][1] == self.heap[i * 2 + 2][1] and self.heap[i * 2 + 2][1] == self.heap[i][1]:\r\n                        if self.heap[i * 2 + 2][0] < self.heap[i * 2 + 1][0]:\r\n                            self.heap[i], self.heap[i * 2 + 2] = self.heap[i * 2 + 2], self.heap[i]\r\n                            i = i * 2 + 2\r\n                        else:\r\n                            self.heap[i], self.heap[i * 2 + 1] = self.heap[i * 2 + 1], self.heap[i]\r\n                            i = i * 2 + 1\r\n                    else:\r\n                        flag = False\r\n                elif (i * 2 + 1) <= len(self.heap) - 1:\r\n                    if self.heap[i * 2 + 1][1] < self.heap[i][1]:\r\n                        self.heap[i], self.heap[i * 2 + 1] = self.heap[i * 2 + 1], self.heap[i]\r\n                        i = i * 2 + 1\r\n                    elif self.heap[i * 2 + 1][1] == self.heap[i][1] and self.heap[i * 2 + 1][0] < self.heap[i][0]:\r\n                        self.heap[i], self.heap[i * 2 + 1] = self.heap[i * 2 + 1], self.heap[i]\r\n                        i = i * 2 + 1\r\n                    else:\r\n                        flag = False\r\n                else:\r\n                    flag = False\r\n\r\n        return minimum\r\n\r\n    def print(self):\r\n        print(self.heap)\r\n\r\ndef processors(A, n):\r\n    Heap = MinHeap()\r\n    P = [[i, 0] for i in range(n)]\r\n    for i in range(len(P)):\r\n        Heap.Insert(P[i])\r\n    i = 0\r\n    while i < len(A):\r\n        # Heap.print()\r\n        min = Heap.ExtractMin()\r\n        # Heap.print()\r\n        print(' '.join(str(i) for i in min))\r\n        min[1] += A[i]\r\n        # Heap.print()\r\n        Heap.Insert(min)\r\n        # Heap.print()\r\n        i += 1\r\n\r\ndef main():\r\n    n, m = map(int, input().split())\r\n    *A, = map(int, input().split())\r\n    processors(A, n)\r\n\r\nmain()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Processors.py b/Processors.py
+--- a/Processors.py	(revision b3da335a7e02d1988fcdcc46706fc8c2b7954f8d)
++++ b/Processors.py	(date 1724649307310)
+@@ -1,3 +1,4 @@
++import heapq
+ class MinHeap():
+ 
+     def __init__(self):
+@@ -92,5 +93,6 @@
+     n, m = map(int, input().split())
+     *A, = map(int, input().split())
+     processors(A, n)
++    heapq.
+ 
+ main()
+Index: Dynamic_max_div_siq.py
+===================================================================
+diff --git a/Dynamic_max_div_siq.py b/Dynamic_max_div_siq.py
+deleted file mode 100644
+--- a/Dynamic_max_div_siq.py	(revision b3da335a7e02d1988fcdcc46706fc8c2b7954f8d)
++++ /dev/null	(revision b3da335a7e02d1988fcdcc46706fc8c2b7954f8d)
+@@ -1,25 +0,0 @@
+-import sys
+-
+-def LIDBottomUp(A:list):
+-
+-    D = [1]
+-
+-    for i in range(1, len(A)):
+-        D.append(1)
+-        for j in range(i):
+-            if A[i] != 0:
+-                if A[i] % A[j] == 0 and D[j] + 1 > D[i]:
+-                    D[i] += 1
+-    ans = 0
+-    for i in range(len(D)):
+-        ans = max(ans, D[i])
+-    return ans
+-
+-def main():
+-    n = int(next(sys.stdin))
+-    reader = (map(int, line.split()) for line in sys.stdin)
+-    *A, = next(reader)
+-    print(LIDBottomUp(A))
+-
+-if __name__ == '__main__':
+-    main()
+\ No newline at end of file
+Index: Dynamic_max_siq.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Dynamic_max_siq.py b/Dynamic_max_siq.py
+new file mode 100644
+--- /dev/null	(date 1724648758603)
++++ b/Dynamic_max_siq.py	(date 1724648758603)
+@@ -0,0 +1,57 @@
++import sys
++
++def LIDBottomUp(A:list):
++
++    D = [1]
++
++    for i in range(1, len(A)):
++        D.append(1)
++        for j in range(i):
++            if A[i] != 0:
++                if A[i] % A[j] == 0 and D[j] + 1 > D[i]:
++                    D[i] += 1
++    ans = 0
++    for i in range(len(D)):
++        ans = max(ans, D[i])
++    return ans
++
++
++def LNISBottomUp(A: list):
++    D = [1]
++    if len(A) == 1:
++        ans = A[-1]
++        ind = 0
++    else:
++        ans = 1
++        ind = len(A) - 1
++
++
++    for i in range(1, len(A)):
++        D.append(1)
++        for j in range(i):
++            if A[i] <= A[j] and D[j] + 1 > D[i]:
++                D[i] += 1
++                if D[i] > ans:
++                    ans = D[i]
++                    ind = i
++
++    L = [ind + 1] * ans
++    j = len(L) - 2
++    curr = ind
++    for i in range(ind - 1, -1, -1):
++        if D[i] == D[curr] - 1 and A[i] >= A[curr]:
++            L[j] = i + 1
++            curr = i
++            j -= 1
++    L = ' '.join(str(i) for i in L)
++    return ans, L
++
++def main():
++    n = int(next(sys.stdin))
++    reader = (map(int, line.split()) for line in sys.stdin)
++    *A, = next(reader)
++    A = LNISBottomUp(A)
++    print(A[0], A[1], sep='\n')
++
++if __name__ == '__main__':
++    main()
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1724648758621)
++++ b/.idea/vcs.xml	(date 1724648758621)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: Haffmans codes.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class Haffmans_tree():\r\n\r\n    s = str(input())\r\n    def __init__(self, s=s):\r\n        self.s = s\r\n\r\n    def build_tree(self):\r\n\r\n        H = []\r\n        S = {}\r\n        for i in range(len(self.s)):\r\n            F = self.s.count(self.s[i])\r\n            if self.s[i] not in S:\r\n                S[self.s[i]] = F\r\n                H.append((self.s[i], F))\r\n\r\n        H.sort(key=lambda x: x[1], reverse=True)\r\n\r\n        i = 0\r\n        tree = []\r\n        while len(H) > 0:\r\n            if len(H) == 1:\r\n                last_1 = H.pop()\r\n                tree.append(last_1)\r\n            else:\r\n                F = H[-1][1]\r\n                F_1 = H[-2][1]\r\n                name = H[-1][0] + H[-2][0]\r\n                last_1 = H.pop()\r\n                last_2 = H.pop()\r\n                tree.append(last_1)\r\n                tree.append(last_2)\r\n                H.append((name, F + F_1, [last_2[0], last_1[0]]))\r\n                H.sort(key=lambda x: x[1], reverse=True)\r\n\r\n        return tree\r\n\r\n    def codes(self, tree:list, elem=-1, num='', S={}, points=[], latters=[])-> tuple:\r\n\r\n        while len(points) < len(tree):\r\n            knot = tree[elem]\r\n            flag = True\r\n            if len(knot) == 3:\r\n                for i in knot[2]:\r\n                    if i not in points:\r\n                        flag = False\r\n                if flag == True:\r\n                    points.append(knot[0])\r\n                    return S, latters\r\n\r\n            if len(knot) == 3:\r\n                for i in knot[2]:\r\n                    j = 0\r\n                    while tree[j][0] != i:\r\n                        j += 1\r\n                    if knot[2].index(i) == 0:\r\n                        num += '0'\r\n                        Haffmans_tree.codes(self, tree, j, num, S)\r\n                        num = num[:-1]\r\n                    else:\r\n                        num += '1'\r\n                        Haffmans_tree.codes(self, tree, j, num, S)\r\n                        num = num[:-1]\r\n            elif len(knot) != 3:\r\n                S[knot[0]] = num\r\n                latters.append(knot[0])\r\n                points.append(knot[0])\r\n                return S, latters\r\n\r\n    def print_tree(self, T:tuple):\r\n\r\n        if len(T[0]) == 1:\r\n            T[0][T[1][0]] = '0'\r\n        k = len(T[1])\r\n        bits = 0\r\n        s_new = ''\r\n        for i in range(len(self.s)):\r\n            s_new += T[0][self.s[i]]\r\n            # bits += len(S[H_new[i][0]])\r\n\r\n        return print(k, len(s_new)), [print(f'{i}: {T[0][i]}') for i in T[1]], print(s_new)\r\n\r\n\r\nHaffmans_tree().print_tree(Haffmans_tree().codes(Haffmans_tree().build_tree()))\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Haffmans codes.py b/Haffmans codes.py
+--- a/Haffmans codes.py	(revision b3da335a7e02d1988fcdcc46706fc8c2b7954f8d)
++++ b/Haffmans codes.py	(date 1724648758617)
+@@ -1,85 +1,157 @@
+-class Haffmans_tree():
++import sys
++def Haffmans_codes():
+ 
+     s = str(input())
+-    def __init__(self, s=s):
+-        self.s = s
+-
+-    def build_tree(self):
+-
+-        H = []
+-        S = {}
+-        for i in range(len(self.s)):
+-            F = self.s.count(self.s[i])
+-            if self.s[i] not in S:
+-                S[self.s[i]] = F
+-                H.append((self.s[i], F))
++    H = []
++    S = {}
++    for i in range(len(s)):
++        F = s.count(s[i])
++        if s[i] not in S:
++            S[s[i]] = F
++            H.append((s[i], F))
+ 
+-        H.sort(key=lambda x: x[1], reverse=True)
++    H.sort(key=lambda x: x[1], reverse=True)
++    print(H)
++
+ 
+-        i = 0
+-        tree = []
+-        while len(H) > 0:
+-            if len(H) == 1:
+-                last_1 = H.pop()
+-                tree.append(last_1)
+-            else:
+-                F = H[-1][1]
+-                F_1 = H[-2][1]
+-                name = H[-1][0] + H[-2][0]
+-                last_1 = H.pop()
+-                last_2 = H.pop()
+-                tree.append(last_1)
+-                tree.append(last_2)
+-                H.append((name, F + F_1, [last_2[0], last_1[0]]))
+-                H.sort(key=lambda x: x[1], reverse=True)
++    i = 0
++    H_1 = []
++    while len(H) > 1:
++        F = H[-1][1]
++        F_1 = H[-2][1]
++        name = H[-1][0] + H[-2][0]
++        last_1 = H.pop()
++        last_2 = H.pop()
++        H_1.append(last_1)
++        H_1.append(last_2)
++        H.append((name, F + F_1))
++        H.sort(key=lambda x: x[1], reverse=True)
+ 
+-        return tree
+-
+-    def codes(self, tree:list, elem=-1, num='', S={}, points=[], latters=[])-> tuple:
+ 
+-        while len(points) < len(tree):
+-            knot = tree[elem]
+-            flag = True
+-            if len(knot) == 3:
+-                for i in knot[2]:
+-                    if i not in points:
+-                        flag = False
+-                if flag == True:
+-                    points.append(knot[0])
+-                    return S, latters
+-
+-            if len(knot) == 3:
+-                for i in knot[2]:
+-                    j = 0
+-                    while tree[j][0] != i:
+-                        j += 1
+-                    if knot[2].index(i) == 0:
+-                        num += '0'
+-                        Haffmans_tree.codes(self, tree, j, num, S)
+-                        num = num[:-1]
+-                    else:
+-                        num += '1'
+-                        Haffmans_tree.codes(self, tree, j, num, S)
+-                        num = num[:-1]
+-            elif len(knot) != 3:
+-                S[knot[0]] = num
+-                latters.append(knot[0])
+-                points.append(knot[0])
+-                return S, latters
++    H = H_1
++    i = 0
++    j = 0
++    k = 0
++    key = ''
++    while i < len(H):
++        if j == 0 and k % 2 == 0:
++            key += '1'
++            j += 1
++        elif j == 0 and k % 2 != 0:
++            key += '0'
++            j += 1
++        elif H[k][0] not in H[j][0]:
++            j += 1
++        elif H[k][0] in H[j][0] and j != len(H) - 1:
++            if H[k][0][0] == H[j][0][0] and len(H[k][0]) != len(H[j][0]):
++                key += '0'
++            else:
++                key += '1'
++            k = j
++            j += 1
++        elif H[k][0] in H[j][0] and j == len(H) - 1:
++            key += '0'
++            S[H[i][0]] = key
++            print(S)
++            key = ''
++            i += 1
++            k = i
++            j = 0
++        elif H[k][0] in H[j][0] and j == len(H) - 2:
++            key += '1'
++            S[H[i][0]] = key
++            print(S)
++            key = ''
++            i += 1
++            k = i
++            j = 0
++
++    print(S)
++
++    # for k in range(len(H) + 1, 2 * len(H) - 1):
++    #     F = H[0 + i][1]
++    #     F_1 = H[1 + i][1]
++    #     print(H)
++    #     H.insert(i + 2, (k, F + F_1))
++    #     H.sort(key=lambda x: x[1])
++    #     i += 2
++
++    H_new = []
++    H.sort(key=lambda x: x[1], reverse=True)
++    for i in range(len(H)):
++        if H[i][0] in S:
++            H_new.append(H[i])
++
+ 
+-    def print_tree(self, T:tuple):
+ 
+-        if len(T[0]) == 1:
+-            T[0][T[1][0]] = '0'
+-        k = len(T[1])
+-        bits = 0
+-        s_new = ''
+-        for i in range(len(self.s)):
+-            s_new += T[0][self.s[i]]
+-            # bits += len(S[H_new[i][0]])
+ 
+-        return print(k, len(s_new)), [print(f'{i}: {T[0][i]}') for i in T[1]], print(s_new)
+ 
+ 
+-Haffmans_tree().print_tree(Haffmans_tree().codes(Haffmans_tree().build_tree()))
++
++
++
++
++
++
++
++
++
++
++
++
++
++    # key = ''
++    # j = 0
++    # i = 0
++    # while i < len(H_new) and len(H_new) != 1:
++    #     if H_new[j][1] == H_new[i][1] and H_new[j][0] == H_new[i][0] and j < len(H_new) - 1:
++    #         key += '0'
++    #         S[H_new[j][0]] = key
++    #         i = 0
++    #         j += 1
++    #         key = ''
++    #     elif H_new[j][1] <= H_new[i][1] and H_new[j][0] != H_new[i][0]:
++    #         key += '1'
++    #         i += 1
++    #     elif H_new[j][0] == H_new[i][0] and j == len(H_new) - 1:
++    #         S[H_new[j][0]] = key
++    #         i = len(H_new)
++    #         key = ''
++    # if len(H_new) == 1:
++    #     S[H_new[0][0]] = '0'
++    #
++    # k = len(H_new)
++    # bits = 0
++    # s_new = ''
++    # for i in range(len(s)):
++    #     s_new += S[s[i]]
++    #     # bits += len(S[H_new[i][0]])
++
++    return print(k, len(s_new)), [print(f'{i[0]}: {S[i[0]]}') for i in H_new], print(s_new)
++
++Haffmans_codes()
++
++    # j = 0
++    # i = 0
++    # key = '0'
++    #
++    # while i < len(H) and j < len(H):
++    #     if H[j][0] not in S:
++    #         j += 1
++    #     elif H[j][0] in S and H[j][1] < H[i][1]:
++    #         key += '1'
++    #         i += 1
++    #     elif H[j][0] in S and H[j][1] == H[i][1] and j != len(H) - 1:
++    #         key = key[:-1]
++    #         key += '0'
++    #         S[H[j][0]] = key
++    #         key = key[:-1]
++    #         j += 1
++    #     elif H[j][0] in S and H[j][1] == H[i][1] and j == len(H) - 1:
++    #         S[H[j][0]] = key
++    #         j += 1
++    # return print(H, S)
++
++Haffmans_codes()
+ 
++s = 'aaaaaaaaaaaaaaaaaaaaabbbbbbbbbbcccccddd' - 'aaaa'
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+new file mode 100644
+--- /dev/null	(date 1724682853491)
++++ b/.idea/workspace.xml	(date 1724682853491)
+@@ -0,0 +1,344 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
++  <component name="ChangeListManager">
++    <list default="true" id="de3d2a6f-48da-461f-9599-e2cf54502b02" name="Changes" comment="Algorithms">
++      <change afterPath="$PROJECT_DIR$/.idea/Algorithms.iml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/Dynamic_max_siq.py" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/window.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/CountSort.py" beforeDir="false" afterPath="$PROJECT_DIR$/CountSort.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Dynamic_max_div_siq.py" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Haffman codes heap" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Haffmans codes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Haffmans codes.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Haffmans decode" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/Heap" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/MergeSort.py" beforeDir="false" afterPath="$PROJECT_DIR$/MergeSort.py" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/Processors.py" afterDir="false" />
++    </list>
++    <option name="SHOW_DIALOG" value="false" />
++    <option name="HIGHLIGHT_CONFLICTS" value="true" />
++    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
++    <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Python Script" />
++      </list>
++    </option>
++  </component>
++  <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="master" />
++      </map>
++    </option>
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="GitHubPullRequestSearchHistory">{
++  &quot;lastFilter&quot;: {
++    &quot;state&quot;: &quot;OPEN&quot;,
++    &quot;assignee&quot;: &quot;TimofeyZimarin&quot;
++  }
++}</component>
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/TimofeyZimarin/Algorithms.git&quot;,
++    &quot;accountId&quot;: &quot;6eeebff9-8cb3-4531-b187-aa745575e6f3&quot;
++  }
++}</component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 5
++}</component>
++  <component name="ProjectId" id="2hhPh20oGj03Bkv8GdUpEJBkWXx" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Python.Backpack.executor&quot;: &quot;Run&quot;,
++    &quot;Python.Binary_search.executor&quot;: &quot;Run&quot;,
++    &quot;Python.CountSort.executor&quot;: &quot;Run&quot;,
++    &quot;Python.FastSort.executor&quot;: &quot;Run&quot;,
++    &quot;Python.Fibonacci.executor&quot;: &quot;Run&quot;,
++    &quot;Python.GCD.executor&quot;: &quot;Run&quot;,
++    &quot;Python.Heap.executor&quot;: &quot;Run&quot;,
++    &quot;Python.HeapSort.executor&quot;: &quot;Run&quot;,
++    &quot;Python.MergeSort.executor&quot;: &quot;Run&quot;,
++    &quot;Python.MinHeap.executor&quot;: &quot;Run&quot;,
++    &quot;Python.Numbers.executor&quot;: &quot;Run&quot;,
++    &quot;Python.Processors.executor&quot;: &quot;Run&quot;,
++    &quot;Python.QuickSort.executor&quot;: &quot;Run&quot;,
++    &quot;Python.Segments.executor&quot;: &quot;Debug&quot;,
++    &quot;Python.pockets.executor&quot;: &quot;Run&quot;,
++    &quot;Python.stack.executor&quot;: &quot;Run&quot;,
++    &quot;Python.window.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/timof/Desktop/Django-examples&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.language&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  }
++}</component>
++  <component name="RecentsManager">
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\timof\PycharmProjects\Algorithms" />
++    </key>
++  </component>
++  <component name="RunManager">
++    <configuration name="MergeSort" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
++      <module name="Algorithms" />
++      <option name="ENV_FILES" value="" />
++      <option name="INTERPRETER_OPTIONS" value="" />
++      <option name="PARENT_ENVS" value="true" />
++      <envs>
++        <env name="PYTHONUNBUFFERED" value="1" />
++      </envs>
++      <option name="SDK_HOME" value="" />
++      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
++      <option name="IS_MODULE_SDK" value="true" />
++      <option name="ADD_CONTENT_ROOTS" value="true" />
++      <option name="ADD_SOURCE_ROOTS" value="true" />
++      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
++      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MergeSort.py" />
++      <option name="PARAMETERS" value="" />
++      <option name="SHOW_COMMAND_LINE" value="false" />
++      <option name="EMULATE_TERMINAL" value="false" />
++      <option name="MODULE_MODE" value="false" />
++      <option name="REDIRECT_INPUT" value="false" />
++      <option name="INPUT_FILE" value="" />
++      <method v="2" />
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="Python.MergeSort" />
++      </list>
++    </recent_temporary>
++  </component>
++  <component name="SharedIndexes">
++    <attachedChunks>
++      <set>
++        <option value="bundled-python-sdk-eebebe6c2be4-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.15325.20" />
++      </set>
++    </attachedChunks>
++  </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
++  <component name="TaskManager">
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="de3d2a6f-48da-461f-9599-e2cf54502b02" name="Changes" comment="" />
++      <created>1718043452018</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1718043452018</updated>
++      <workItem from="1722280920099" duration="170000" />
++    </task>
++    <task id="LOCAL-00001" summary="Fibonacci">
++      <option name="closed" value="true" />
++      <created>1718114080282</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1718114080282</updated>
++    </task>
++    <task id="LOCAL-00002" summary="Algorithms">
++      <option name="closed" value="true" />
++      <created>1718516621481</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1718516621481</updated>
++    </task>
++    <task id="LOCAL-00003" summary="Algorithms">
++      <option name="closed" value="true" />
++      <created>1720943567953</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1720943567953</updated>
++    </task>
++    <task id="LOCAL-00004" summary="Algorithms">
++      <option name="closed" value="true" />
++      <created>1720943583835</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1720943583835</updated>
++    </task>
++    <task id="LOCAL-00005" summary="Algorithms">
++      <option name="closed" value="true" />
++      <created>1721464605472</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1721464605472</updated>
++    </task>
++    <task id="LOCAL-00006" summary="Algorithms">
++      <option name="closed" value="true" />
++      <created>1721481614371</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1721481614371</updated>
++    </task>
++    <task id="LOCAL-00007" summary="Algorithms">
++      <option name="closed" value="true" />
++      <created>1721631734077</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1721631734077</updated>
++    </task>
++    <task id="LOCAL-00008" summary="Algorithms">
++      <option name="closed" value="true" />
++      <created>1721995374175</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1721995374175</updated>
++    </task>
++    <task id="LOCAL-00009" summary="Algorithms">
++      <option name="closed" value="true" />
++      <created>1722189892194</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1722189892194</updated>
++    </task>
++    <task id="LOCAL-00010" summary="Algorithms">
++      <option name="closed" value="true" />
++      <created>1722199377406</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL-00010" />
++      <option name="project" value="LOCAL" />
++      <updated>1722199377406</updated>
++    </task>
++    <task id="LOCAL-00011" summary="Algorithms">
++      <option name="closed" value="true" />
++      <created>1724304518912</created>
++      <option name="number" value="00011" />
++      <option name="presentableId" value="LOCAL-00011" />
++      <option name="project" value="LOCAL" />
++      <updated>1724304518912</updated>
++    </task>
++    <task id="LOCAL-00012" summary="Algorithms">
++      <option name="closed" value="true" />
++      <created>1724391295076</created>
++      <option name="number" value="00012" />
++      <option name="presentableId" value="LOCAL-00012" />
++      <option name="project" value="LOCAL" />
++      <updated>1724391295076</updated>
++    </task>
++    <task id="LOCAL-00013" summary="Algorithms">
++      <option name="closed" value="true" />
++      <created>1724647741808</created>
++      <option name="number" value="00013" />
++      <option name="presentableId" value="LOCAL-00013" />
++      <option name="project" value="LOCAL" />
++      <updated>1724647741808</updated>
++    </task>
++    <option name="localTasksCounter" value="14" />
++    <servers />
++  </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
++  </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="Fibonacci" />
++    <MESSAGE value="Algorithms" />
++    <option name="LAST_COMMIT_MESSAGE" value="Algorithms" />
++  </component>
++  <component name="XDebuggerManager">
++    <breakpoint-manager>
++      <breakpoints>
++        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
++          <url>file://$PROJECT_DIR$/MergeSort.py</url>
++          <line>33</line>
++          <option name="timeStamp" value="44" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
++          <url>file://$PROJECT_DIR$/MergeSort.py</url>
++          <line>7</line>
++          <option name="timeStamp" value="45" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
++          <url>file://$PROJECT_DIR$/MergeSort.py</url>
++          <line>8</line>
++          <option name="timeStamp" value="46" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
++          <url>file://$PROJECT_DIR$/MergeSort.py</url>
++          <line>13</line>
++          <option name="timeStamp" value="47" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
++          <url>file://$PROJECT_DIR$/pockets.py</url>
++          <option name="timeStamp" value="54" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
++          <url>file://$PROJECT_DIR$/Processors.py</url>
++          <line>8</line>
++          <option name="timeStamp" value="75" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
++          <url>file://$PROJECT_DIR$/Processors.py</url>
++          <line>10</line>
++          <option name="timeStamp" value="76" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
++          <url>file://$PROJECT_DIR$/Processors.py</url>
++          <line>31</line>
++          <option name="timeStamp" value="77" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
++          <url>file://$PROJECT_DIR$/Processors.py</url>
++          <line>54</line>
++          <option name="timeStamp" value="81" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
++          <url>file://$PROJECT_DIR$/Processors.py</url>
++          <line>61</line>
++          <option name="timeStamp" value="83" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
++          <url>file://$PROJECT_DIR$/Processors.py</url>
++          <line>81</line>
++          <option name="timeStamp" value="85" />
++        </line-breakpoint>
++        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
++          <url>file://$PROJECT_DIR$/Processors.py</url>
++          <line>83</line>
++          <option name="timeStamp" value="86" />
++        </line-breakpoint>
++      </breakpoints>
++      <default-breakpoints>
++        <breakpoint type="python-exception">
++          <properties notifyOnTerminate="true" exception="BaseException">
++            <option name="notifyOnTerminate" value="true" />
++          </properties>
++        </breakpoint>
++      </default-breakpoints>
++    </breakpoint-manager>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/inspectionProfiles/profiles_settings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/profiles_settings.xml b/.idea/inspectionProfiles/profiles_settings.xml
+new file mode 100644
+--- /dev/null	(date 1724648758629)
++++ b/.idea/inspectionProfiles/profiles_settings.xml	(date 1724648758629)
+@@ -0,0 +1,6 @@
++<component name="InspectionProjectProfileManager">
++  <settings>
++    <option name="USE_PROJECT_PROFILE" value="false" />
++    <version value="1.0" />
++  </settings>
++</component>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+new file mode 100644
+--- /dev/null	(date 1724648758656)
++++ b/.idea/modules.xml	(date 1724648758656)
+@@ -0,0 +1,8 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ProjectModuleManager">
++    <modules>
++      <module fileurl="file://$PROJECT_DIR$/.idea/Algorithms.iml" filepath="$PROJECT_DIR$/.idea/Algorithms.iml" />
++    </modules>
++  </component>
++</project>
+\ No newline at end of file
+Index: window.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/window.py b/window.py
+new file mode 100644
+--- /dev/null	(date 1724648758633)
++++ b/window.py	(date 1724648758633)
+@@ -0,0 +1,43 @@
++from stack import stack
++
++
++def window(data: list, m):
++    a = stack()
++    b = stack()
++    maximum = []
++    i = 0
++    flag = True
++    for i in range(m):
++        a.push(data[i])
++    i += 1
++    while flag:
++        for k in range(m):
++            b.push(a.pop())
++        k = 0
++        while k < m and i <= len(data) and flag:
++            first = b.max()
++            b.pop()
++            second = a.max()
++            k += 1
++            if first > second:
++                maximum.append(first)
++            else:
++                maximum.append(second)
++            if i < len(data):
++                a.push(data[i])
++                i += 1
++            else:
++                flag = False
++
++    return ' '.join(str(i) for i in maximum)
++
++
++def main():
++    n = int(input())
++    *data, = (map(int, input().split()))
++    m = int(input())
++    print(window(data, m))
++
++
++if __name__ == '__main__':
++    main()
+Index: .idea/Algorithms.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/Algorithms.iml b/.idea/Algorithms.iml
+new file mode 100644
+--- /dev/null	(date 1724648758667)
++++ b/.idea/Algorithms.iml	(date 1724648758667)
+@@ -0,0 +1,10 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="PYTHON_MODULE" version="4">
++  <component name="NewModuleRootManager">
++    <content url="file://$MODULE_DIR$">
++      <excludeFolder url="file://$MODULE_DIR$/.venv" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1724648758662)
++++ b/.idea/misc.xml	(date 1724648758662)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Black">
++    <option name="sdkName" value="Python 3.12 (Algorithms)" />
++  </component>
++  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12 (Algorithms)" project-jdk-type="Python SDK" />
++</project>
+\ No newline at end of file
+Index: MergeSort.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import sys\r\n\r\ndef MergeSort(A):\r\n    l = 0\r\n    r = len(A) - 1\r\n    if l < r:\r\n        m = (l + r) // 2\r\n        A = Merge(MergeSort(A[0:m + 1]), MergeSort(A[m + 1:]))\r\n    return A\r\n\r\ndef Merge(A_1, A_2):\r\n    i = 0\r\n    j = 0\r\n    A_sorted = []\r\n    while i < len(A_1) or j < len(A_2):\r\n        if i == len(A_1):\r\n            A_sorted.append(A_2[j])\r\n            j += 1\r\n        elif j == len(A_2):\r\n            A_sorted.append(A_1[i])\r\n            i += 1\r\n        elif A_1[i] <= A_2[j]:\r\n            A_sorted.append(A_1[i])\r\n            i += 1\r\n        else:\r\n            A_sorted.append(A_2[j])\r\n            j += 1\r\n\r\n    return A_sorted\r\n\r\ndef main():\r\n\r\n    reader = sys.stdin\r\n    n = int(next(reader))\r\n    reader = sys.stdin\r\n    A = [int(i) for i in next(reader).split()]\r\n    counter = 0\r\n\r\n    A_sorted = MergeSort(A)\r\n\r\n    return A_sorted\r\n\r\nif __name__ == '__main__':\r\n    print(main())
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/MergeSort.py b/MergeSort.py
+--- a/MergeSort.py	(revision b3da335a7e02d1988fcdcc46706fc8c2b7954f8d)
++++ b/MergeSort.py	(date 1724648758648)
+@@ -1,14 +1,18 @@
+ import sys
+ 
+-def MergeSort(A):
++def MergeSort(A, inv=0):
+     l = 0
+     r = len(A) - 1
+     if l < r:
+         m = (l + r) // 2
+-        A = Merge(MergeSort(A[0:m + 1]), MergeSort(A[m + 1:]))
+-    return A
++        Left = MergeSort(A[0:m + 1])
++        Right = MergeSort(A[m + 1:])
++        A_ret = Merge(Left[1], Right[1], Left[0] + Right[0])
++        inv += A_ret[0]
++        A = A_ret[1]
++    return (inv, A)
+ 
+-def Merge(A_1, A_2):
++def Merge(A_1, A_2, inv):
+     i = 0
+     j = 0
+     A_sorted = []
+@@ -25,8 +29,9 @@
+         else:
+             A_sorted.append(A_2[j])
+             j += 1
++            inv += len(A_1) - i
+ 
+-    return A_sorted
++    return (inv, A_sorted)
+ 
+ def main():
+ 
+@@ -34,11 +39,9 @@
+     n = int(next(reader))
+     reader = sys.stdin
+     A = [int(i) for i in next(reader).split()]
+-    counter = 0
+-
+     A_sorted = MergeSort(A)
++    print(A_sorted[0])
+ 
+-    return A_sorted
+ 
+ if __name__ == '__main__':
+-    print(main())
+\ No newline at end of file
++    main()
+\ No newline at end of file

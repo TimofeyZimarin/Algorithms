@@ -1,7 +1,7 @@
-class PhoneBook():
+class PhoneBook:
 
     def __init__(self):
-        self.book = [0 for i in range(10**7)]
+        self.book = [0 for i in range(10 ** 7)]
 
     def add(self, data):
         phone = int(data[0])
@@ -19,6 +19,7 @@ class PhoneBook():
         phone = int(phone)
         self.book[phone] = 0
 
+
 def main():
     n = int(input())
     com = []
@@ -33,5 +34,6 @@ def main():
             Book.find(com[i][1])
         elif com[i][0] == 'del':
             Book.delete(com[i][1])
+
 
 main()

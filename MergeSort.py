@@ -1,14 +1,18 @@
 import sys
 
-def MergeSort(A):
+def MergeSort(A, inv=0):
     l = 0
     r = len(A) - 1
     if l < r:
         m = (l + r) // 2
-        A = Merge(MergeSort(A[0:m + 1]), MergeSort(A[m + 1:]))
-    return A
+        Left = MergeSort(A[0:m + 1])
+        Right = MergeSort(A[m + 1:])
+        A_ret = Merge(Left[1], Right[1], Left[0] + Right[0])
+        inv += A_ret[0]
+        A = A_ret[1]
+    return (inv, A)
 
-def Merge(A_1, A_2):
+def Merge(A_1, A_2, inv):
     i = 0
     j = 0
     A_sorted = []
@@ -25,8 +29,9 @@ def Merge(A_1, A_2):
         else:
             A_sorted.append(A_2[j])
             j += 1
+            inv += len(A_1) - i
 
-    return A_sorted
+    return (inv, A_sorted)
 
 def main():
 
@@ -34,11 +39,9 @@ def main():
     n = int(next(reader))
     reader = sys.stdin
     A = [int(i) for i in next(reader).split()]
-    counter = 0
-
     A_sorted = MergeSort(A)
+    print(A_sorted[0])
 
-    return A_sorted
 
 if __name__ == '__main__':
-    print(main())
+    main()

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="de3d2a6f-48da-461f-9599-e2cf54502b02" name="Changes" comment="Algorithms">
+      <change afterPath="$PROJECT_DIR$/.idea/Algorithms.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dynamic_max_siq.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eq_or_not.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CountSort.py" beforeDir="false" afterPath="$PROJECT_DIR$/CountSort.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dynamic_max_div_siq.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haffman codes heap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haffmans codes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Haffmans codes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Haffmans decode" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HashTable" beforeDir="false" afterPath="$PROJECT_DIR$/HashTable.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Heap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MergeSort.py" beforeDir="false" afterPath="$PROJECT_DIR$/MergeSort.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PhoneBook" beforeDir="false" afterPath="$PROJECT_DIR$/PhoneBook.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Processors.py" beforeDir="false" afterPath="$PROJECT_DIR$/Processors.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;TimofeyZimarin&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="6eeebff9-8cb3-4531-b187-aa745575e6f3" />
+        <option name="url" value="https://github.com/TimofeyZimarin/Algorithms.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2hhPh20oGj03Bkv8GdUpEJBkWXx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Backpack.executor": "Run",
+    "Python.Binary_search.executor": "Run",
+    "Python.CountSort.executor": "Run",
+    "Python.FastSort.executor": "Run",
+    "Python.Fibonacci.executor": "Run",
+    "Python.GCD.executor": "Run",
+    "Python.HashTable.executor": "Run",
+    "Python.Heap.executor": "Run",
+    "Python.HeapSort.executor": "Run",
+    "Python.MergeSort.executor": "Run",
+    "Python.MinHeap.executor": "Run",
+    "Python.Numbers.executor": "Run",
+    "Python.Processors.executor": "Run",
+    "Python.QuickSort.executor": "Run",
+    "Python.Segments.executor": "Debug",
+    "Python.Tables.executor": "Run",
+    "Python.eq_or_not.executor": "Run",
+    "Python.pockets.executor": "Run",
+    "Python.stack.executor": "Run",
+    "Python.window.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/timof/Desktop/Django-examples",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "configurable.group.language",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\timof\PycharmProjects\Algorithms" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="MergeSort" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Algorithms" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/MergeSort.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.MergeSort" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-eebebe6c2be4-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.15325.20" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de3d2a6f-48da-461f-9599-e2cf54502b02" name="Changes" comment="" />
+      <created>1718043452018</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718043452018</updated>
+      <workItem from="1722280920099" duration="170000" />
+    </task>
+    <task id="LOCAL-00001" summary="Fibonacci">
+      <option name="closed" value="true" />
+      <created>1718114080282</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718114080282</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Algorithms">
+      <option name="closed" value="true" />
+      <created>1718516621481</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1718516621481</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Algorithms">
+      <option name="closed" value="true" />
+      <created>1720943567953</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720943567953</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Algorithms">
+      <option name="closed" value="true" />
+      <created>1720943583835</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720943583835</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Algorithms">
+      <option name="closed" value="true" />
+      <created>1721464605472</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1721464605472</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Algorithms">
+      <option name="closed" value="true" />
+      <created>1721481614371</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1721481614371</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Algorithms">
+      <option name="closed" value="true" />
+      <created>1721631734077</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1721631734077</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Algorithms">
+      <option name="closed" value="true" />
+      <created>1721995374175</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1721995374175</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Algorithms">
+      <option name="closed" value="true" />
+      <created>1722189892194</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1722189892194</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Algorithms">
+      <option name="closed" value="true" />
+      <created>1722199377406</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1722199377406</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Algorithms">
+      <option name="closed" value="true" />
+      <created>1724304518912</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1724304518912</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Algorithms">
+      <option name="closed" value="true" />
+      <created>1724391295076</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1724391295076</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Algorithms">
+      <option name="closed" value="true" />
+      <created>1724647741808</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1724647741808</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Algorithms">
+      <option name="closed" value="true" />
+      <created>1724687805913</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1724687805913</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fibonacci" />
+    <MESSAGE value="Algorithms" />
+    <option name="LAST_COMMIT_MESSAGE" value="Algorithms" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MergeSort.py</url>
+          <line>33</line>
+          <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MergeSort.py</url>
+          <line>7</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MergeSort.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MergeSort.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/pockets.py</url>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Processors.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Processors.py</url>
+          <line>6</line>
+          <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Processors.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/eq_or_not.py</url>
+          <line>7</line>
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/eq_or_not.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/eq_or_not.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="98" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/eq_or_not.py</url>
+          <line>5</line>
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/eq_or_not.py</url>
+          <line>41</line>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/eq_or_not.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
